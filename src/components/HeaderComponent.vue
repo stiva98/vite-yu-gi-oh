@@ -14,13 +14,24 @@ export default {
 
 <template>
     <header>
-        HEADER
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-1">
+                    <img src="../assets/img/yugioh-logo.png" alt="Yu-Gi-Oh">
+                </div>
+                <div class="col-auto">
+                    <h1>
+                        Yu-Gi-Oh API
+                    </h1>
+                </div>
+            </div>
+        </div>
     </header>
 </template>
 
 <style lang="scss" scoped>
-header {
-    padding: 40px;
-    text-align: center;
+img {
+    width: 80px;
 }
+
 </style>
