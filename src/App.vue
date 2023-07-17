@@ -2,7 +2,7 @@
 import HeaderComponent from "./components/HeaderComponent.vue";
 import MainComponent from "./components/MainComponent.vue";
 import FooterComponent from "./components/FooterComponent.vue";
-//import axios from "axios";
+import axios from "axios";
 
 export default {
   name: "App",
@@ -12,16 +12,27 @@ export default {
     FooterComponent,
   },
   data() {
-    return {};
+    return {
+      charactersArray: []
+    };
   },
   methods: {},
+
+  created() {
+    axios
+        .get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=39&offset=0')
+        .then(response => {
+          this.charactersArray = response.data.data;
+          //console.log(response.data.data)
+        })
+  }
 };
 </script>
 
 <template>
   <HeaderComponent />
 
-  <MainComponent />
+  <MainComponent :characters="charactersArray" />
 
   <FooterComponent />
 </template>
