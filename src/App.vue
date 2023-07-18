@@ -15,7 +15,22 @@ export default {
       store
     };
   },
-  methods: {},
+  methods: {
+    selectClick() {
+      //console.log('ok')
+      axios
+          .get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=50&offset=0', {
+            params: {
+              archetype: this.store.selectVariables
+            }
+          })
+          .then(response => {
+            this.store.charactersArray = response.data.data;
+            //console.log(response.data.data)
+            this.store.variablesArray = response.data.data.length
+          })
+    }
+  },
 
   created() {
     axios
@@ -28,7 +43,7 @@ export default {
         .get('https://db.ygoprodeck.com/api/v7/archetypes.php')
         .then(response => {
           this.store.selectArray = response.data;
-          //console.log(response.data.data)
+          //console.log(response.data)
         })
   }
 };
@@ -37,7 +52,7 @@ export default {
 <template>
   <HeaderComponent />
 
-  <MainComponent />
+  <MainComponent @change="selectClick()"/>
 </template>
 
 <style lang="scss">

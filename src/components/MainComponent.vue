@@ -21,7 +21,7 @@ export default {
 <template>
     <main>
         <div class="container">
-            <select class="form-select" aria-label="Default select example">
+            <select class="form-select" aria-label="Default select example" v-model="store.selectVariables" @change="$emit('change')">
                 <option v-for="(singleSelectArray, i) in store.selectArray" :key="i" 
                 :value="singleSelectArray.archetype_name">
                 {{ singleSelectArray.archetype_name}}
