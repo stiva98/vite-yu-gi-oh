@@ -2,6 +2,7 @@
 import HeaderComponent from "./components/HeaderComponent.vue";
 import MainComponent from "./components/MainComponent.vue";
 import axios from "axios";
+import { store } from "./store";
 
 export default {
   name: "App",
@@ -11,7 +12,7 @@ export default {
   },
   data() {
     return {
-      charactersArray: []
+      store
     };
   },
   methods: {},
@@ -20,7 +21,7 @@ export default {
     axios
         .get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=50&offset=0')
         .then(response => {
-          this.charactersArray = response.data.data;
+          this.store.charactersArray = response.data.data;
           //console.log(response.data.data)
         })
   }
@@ -30,7 +31,7 @@ export default {
 <template>
   <HeaderComponent />
 
-  <MainComponent :characters="charactersArray" />
+  <MainComponent />
 </template>
 
 <style lang="scss">
