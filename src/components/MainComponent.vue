@@ -22,16 +22,16 @@ export default {
     <main>
         <div class="container">
             <select class="form-select" aria-label="Default select example">
-                <option selected>Alien</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <option v-for="(singleSelectArray, i) in store.selectArray" :key="i" 
+                :value="singleSelectArray.archetype_name">
+                {{ singleSelectArray.archetype_name}}
+            </option>
             </select>
         </div>
         <div class="container bg-white">
             <div class="found-cards bg-black">
                 <p class="text-white p-2">
-                    Found 39 Cards
+                    Found {{ store.charactersArray.length}} Cards
                 </p>
             </div>
             <div class="row justify-content-between" v-if="store.charactersArray.length == store.variablesArray">

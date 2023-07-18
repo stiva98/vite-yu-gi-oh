@@ -24,6 +24,12 @@ export default {
           this.store.charactersArray = response.data.data;
           //console.log(response.data.data)
         })
+    axios
+        .get('https://db.ygoprodeck.com/api/v7/archetypes.php')
+        .then(response => {
+          this.store.selectArray = response.data;
+          //console.log(response.data.data)
+        })
   }
 };
 </script>
