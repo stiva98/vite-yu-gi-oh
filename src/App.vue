@@ -1,7 +1,6 @@
 <script>
 import HeaderComponent from "./components/HeaderComponent.vue";
 import MainComponent from "./components/MainComponent.vue";
-import FooterComponent from "./components/FooterComponent.vue";
 import axios from "axios";
 
 export default {
@@ -9,7 +8,6 @@ export default {
   components: {
     HeaderComponent,
     MainComponent,
-    FooterComponent,
   },
   data() {
     return {
@@ -20,7 +18,7 @@ export default {
 
   created() {
     axios
-        .get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=39&offset=0')
+        .get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=50&offset=0')
         .then(response => {
           this.charactersArray = response.data.data;
           //console.log(response.data.data)
@@ -33,8 +31,6 @@ export default {
   <HeaderComponent />
 
   <MainComponent :characters="charactersArray" />
-
-  <FooterComponent />
 </template>
 
 <style lang="scss">

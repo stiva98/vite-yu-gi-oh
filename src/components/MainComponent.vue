@@ -34,19 +34,17 @@ export default {
                     Found 39 Cards
                 </p>
             </div>
-            <div class="row">
-                <div class="col-2" v-for="(character, i) in characters" :key="i">
+            <div class="row justify-content-between">
+                <div class="col-2 d-flex flex-column mx-2 my-card mb-2" v-for="(character, i) in characters" :key="i">
                     <div>
-                        <img src="" :alt="character.name">
+                        <img :src="character.card_images[0].image_url" :alt="character.name">
                     </div>
-                    <div>
-                        <h2>
+                    <div class="container-card">
+                        <h2 class="mb-0 text-white text-center">
                             {{ character.name }}
                         </h2>
-                    </div>
-                    <div>
-                        <p>
-                            Specie
+                        <p class="text-center">
+                            {{ character.archetype }}
                         </p>
                     </div>
                 </div>
@@ -65,6 +63,25 @@ main {
     }
     .form-select {
         width: 200px;
+    }
+    .container-card > h2 {
+        font-weight: bold;
+        font-size: small;
+        text-transform: uppercase;
+    }
+    .container-card  {
+        font-size: small;
+        background-color: $first-bg-color;
+        padding: 20px;
+        flex-grow: 1;
+    }
+    img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: cover;
+    }
+    .my-card {
+        flex-grow: 1;
     }
 }
 </style>
